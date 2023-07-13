@@ -1,0 +1,14 @@
+<h3>Product List</h3>
+<mat-grid-list [cols]="cols.length" rowHeight="30px">
+    <div *ngFor="let cols of cols">
+        <mat-grid-tile>{{cols}}</mat-grid-tile>
+    </div>
+    <div *ngFor="let product of products">
+        <mat-grid-tile>{{product.name}}</mat-grid-tile>
+        <mat-grid-tile>{{product.name}}</mat-grid-tile>
+        <mat-grid-tile>{{product.name}}</mat-grid-tile>
+        <mat-grid-tile>{{product.name}}</mat-grid-tile>
+        <mat-grid-tile>{{product.name}}</mat-grid-tile>
+        <mat-grid-tile>{{product.name}}</mat-grid-tile>
+    </div>
+</mat-grid-list>
