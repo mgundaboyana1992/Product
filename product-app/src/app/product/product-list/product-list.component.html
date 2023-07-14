@@ -1,14 +1,15 @@
 <h1 style="margin-left:40%;">Product List</h1>
-<mat-grid-list [cols]="cols.length" rowHeight="30px">
+<mat-grid-list [cols]="cols.length"  rowHeight="30px">
     <div *ngFor="let cols of cols">
         <mat-grid-tile>{{cols}}</mat-grid-tile>
     </div>
     <div *ngFor="let product of products">
-        <mat-grid-tile>{{product.code}}</mat-grid-tile>
+        <mat-grid-tile><a [routerLink]="['product',product.id]">{{product.code}}</a></mat-grid-tile>
         <mat-grid-tile>{{product.name}}</mat-grid-tile>
         <mat-grid-tile>{{product.quantity}}</mat-grid-tile>
         <mat-grid-tile>{{product.price}}</mat-grid-tile>
         <mat-grid-tile>{{product.description}}</mat-grid-tile>
         <mat-grid-tile>{{product.image}}</mat-grid-tile>
+        <mat-grid-tile><button type="but" class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button></mat-grid-tile>
     </div>
 </mat-grid-list>

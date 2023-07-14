@@ -1,0 +1,37 @@
+<h1 style="margin-left:40%;">Product Page</h1>
+<div class="px-5">
+  <form class="col-md-6" #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+    <div class="mb-3">
+      <label for="code" class="form-label">Code</label>
+      <input required [(ngModel)]="product.code" type="text" class="form-control"  #code="ngModel" name="code" id="code" ngModel/>
+      <span class="text-danger" *ngIf="code.touched && code.errors?.['required']">Code is required</span>
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input required  [(ngModel)]="product.name" type="text" class="form-control" #name="ngModel" name="name" id="name" ngModel/>
+      <span class="text-danger" *ngIf="name.touched && name.errors?.['required']">Name is required</span>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input type="text" [(ngModel)]="product.description" class="form-control" name="description" id="description" ngModel/>
+    </div>
+    <div class="mb-3">
+      <label for="quantity" class="form-label">Quantity</label>
+      <input required [(ngModel)]="product.quantity" type="text" class="form-control"  #quantity="ngModel" name="quantity" id="quantity" ngModel/>
+      <span class="text-danger" *ngIf="quantity.touched && quantity.errors?.['required']">Quantity is required</span>
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input required [(ngModel)]="product.price" type="text" class="form-control"  #price="ngModel" name="price" id="price" ngModel/>
+      <span class="text-danger" *ngIf="price.touched && price.errors?.['required']">Price is required</span>
+    </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">Image</label>
+      <input type="text" [(ngModel)]="product.image" class="form-control" name="image" id="image" ngModel/>
+    </div>
+    <button type="submit" [disabled]="!productForm.valid" class="btn btn-primary">Submit</button>
+    <button style="margin-left: 10%;" type="button" class="btn btn-primary" (click)="back()">Back</button>
+</form>
+</div>
+  
+ 

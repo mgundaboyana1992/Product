@@ -12,6 +12,7 @@ import { ProductsService } from './service/products.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     HttpClientModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule
   ],
   providers: [ProductsService],
   bootstrap: [AppComponent]

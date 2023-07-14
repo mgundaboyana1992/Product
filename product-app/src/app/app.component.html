@@ -1,8 +1,8 @@
 <button mat-button [matMenuTriggerFor]="Product">Product</button>
 <mat-menu #Product="matMenu">
-  <button mat-menu-item >Product List</button>
-  <button mat-menu-item>Add Product</button>
+  <button mat-menu-item routerLink="products">Product List</button>
+  <button mat-menu-item routerLink="product">Add Product</button>
 </mat-menu>
 
 
-<app-product-list></app-product-list>
+<router-outlet></router-outlet>
