@@ -29,6 +29,20 @@
       <label for="image" class="form-label">Image</label>
       <input type="text" [(ngModel)]="product.image" class="form-control" name="image" id="image" ngModel/>
     </div>
+    <div class="mb-3">
+      <label for="category" class="form-label">Category</label>
+      <select (change)="selectSubCategory(product.categoryId)" [(ngModel)]="product.categoryId" required  name="category" id="category" class="form-select mb-3" #category="ngModel" ngModel>      
+        <option  *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</option>
+      </select>
+      <span class="text-danger" *ngIf="category.touched && category.errors?.['required']">Category is required</span>
+    </div>
+    <div class="mb-3">
+      <label for="subcategory" class="form-label">SubCategory</label>
+      <select required name="subcategory" id="subcategory" class="form-select mb-3" #subcategory="ngModel" ngModel>       
+        <option  *ngFor="let subcat of clonedsubCategories" [value]="subcat.id">{{subcat.name}}</option> 
+      </select>
+      <span class="text-danger" *ngIf="subcategory.touched && subcategory.errors?.['required']">Subcategory is required</span>
+    </div>
     <button type="submit" [disabled]="!productForm.valid" class="btn btn-primary">Submit</button>
     <button style="margin-left: 10%;" type="button" class="btn btn-primary" (click)="back()">Back</button>
 </form>

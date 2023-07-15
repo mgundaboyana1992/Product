@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProductsService } from 'src/app/service/products.service';
-import { IProduct } from '../product-list/product-list.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IProduct } from 'src/app/Model/iproduct';
+import { ICategories } from 'src/app/Model/ICategories';
+import { ISubCategories } from 'src/app/Model/ISubcategories';
+import { CategoryService } from 'src/app/service/category.service';
 
 @Component({
   selector: 'app-product',
@@ -11,21 +14,29 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(private productService: ProductsService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private productService: ProductsService, private categoryService: CategoryService,
+    private router: Router, private route: ActivatedRoute) { }
 
   id: number = 0;
-  product:IProduct = {};
+  product: IProduct = {};
+  categories: ICategories[] = [];
+  subCategories: ISubCategories[] = [];
+  clonedsubCategories: ISubCategories[] = [];
 
   ngOnInit(): void {
+    this.categories = this.categoryService.getCategories();
+    this.subCategories = this.categoryService.getSubCategories();   
     this.id = this.route.snapshot.params['id'];
-    if(this.id > 0){
-      this.productService.getById(this.id).subscribe(data =>{
+    if (this.id > 0) {
+      this.productService.getById(this.id).subscribe(data => {
         this.product = data;
       })
     }
   }
 
   onSubmit(data: NgForm) {
+
+    console.log(data.value);
 
     let product: IProduct = {
       code: data.value.code,
@@ -38,7 +49,7 @@ export class ProductComponent implements OnInit {
 
     if (this.id > 0) {
       product.id = this.id;
-      this.updateProduct(this.id,product);
+      this.updateProduct(this.id, product);
     }
     else {
       this.addProduct(product);
@@ -51,11 +62,17 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  updateProduct(id:number,product: IProduct) {
-    this.productService.updateProduct(id,product).subscribe(data => {
+  updateProduct(id: number, product: IProduct) {
+    this.productService.updateProduct(id, product).subscribe(data => {
       this.back();
     });
   }
+
+  selectSubCategory(id: any) {
+    this.clonedsubCategories=[...this.subCategories];
+    this.clonedsubCategories = this.subCategories.filter(x => x.categoryId == parseInt(id));
+  }
+
 
   back() {
     this.router.navigateByUrl("/products");

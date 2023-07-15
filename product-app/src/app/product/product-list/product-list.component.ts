@@ -1,16 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IProduct } from 'src/app/Model/iproduct';
 import { ProductsService } from 'src/app/service/products.service';
-
-export interface IProduct {
-  id?: number;
-  code?: string;
-  name?: string;
-  quantity?:number;
-  price?: number;
-  description?: string;
-  image?: string;
-}
-
 
 @Component({
   selector: 'app-product-list',
