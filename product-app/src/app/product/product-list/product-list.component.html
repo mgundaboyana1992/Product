@@ -18,14 +18,14 @@
     <span matSnackBarActions></span>
 </div>
 
-<table class="table px-5 col-md-6 table-striped">
+<table class="table px-5 col-md-6 ">
     <thead>
-      <tr>
+      <tr class="table-primary">
         <th scope="col" *ngFor="let cols of cols">{{cols}}</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of products">
+      <tr *ngFor="let product of products" [ngClass]="getStyleClass(product.quantity)">
         <th scope="row"><a [routerLink]="['product',product.id]">{{product.code}}</a></th>
         <td>{{product.name}}</td>
         <td>{{product.quantity}}</td>
