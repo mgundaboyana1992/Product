@@ -88,7 +88,7 @@ export class ProductComponent implements OnInit {
     this.productService.updateProduct(id, product).subscribe({
       next: (data) => {
         this.isError=false;
-        this.snackBar.open(`Product Code ${data.code} added successfully`, "", { duration: 5000 });
+        this.snackBar.open(`Product Code ${data.code} updated successfully`, "", { duration: 5000 });
         this.back();
       },
       error: (err) => {

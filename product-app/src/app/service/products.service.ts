@@ -39,11 +39,11 @@ export class ProductsService {
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
-      return throwError(() => new Error(`An error occurred:${error.message}`));
+      return throwError(() => new Error(`An error occurred:${error.message} error was:${error.error}`));
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.
-        return throwError(() => new Error(`Backend returned code ${error.status} body was: ${error.message}`));
+        return throwError(() => new Error(`Backend returned code ${error.status} body was: ${error.message}  error was:${error.error}`));
     }
   }
   
