@@ -17,18 +17,23 @@
     </div>
     <span matSnackBarActions></span>
 </div>
-<mat-grid-list [cols]="cols.length" rowHeight="30px">
-    <div *ngFor="let cols of cols">
-        <mat-grid-tile>{{cols}}</mat-grid-tile>
-    </div>
-    <div *ngFor="let product of products">
-        <mat-grid-tile><a [routerLink]="['product',product.id]">{{product.code}}</a></mat-grid-tile>
-        <mat-grid-tile>{{product.name}}</mat-grid-tile>
-        <mat-grid-tile>{{product.quantity}}</mat-grid-tile>
-        <mat-grid-tile>{{product.price}}</mat-grid-tile>
-        <mat-grid-tile>{{product.description}}</mat-grid-tile>
-        <mat-grid-tile>{{product.image}}</mat-grid-tile>
-        <mat-grid-tile><button type="but" class="btn btn-danger"
-                (click)="deleteProduct(product.id)">Delete</button></mat-grid-tile>
-    </div>
-</mat-grid-list>
+
+<table class="table px-5 col-md-6 table-striped">
+    <thead>
+      <tr>
+        <th scope="col" *ngFor="let cols of cols">{{cols}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <th scope="row"><a [routerLink]="['product',product.id]">{{product.code}}</a></th>
+        <td>{{product.name}}</td>
+        <td>{{product.quantity}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.image}}</td>
+        <td><button type="button" class="btn btn-danger"
+            (click)="deleteProduct(product.id)">Delete</button></td>
+      </tr>      
+    </tbody>
+  </table>

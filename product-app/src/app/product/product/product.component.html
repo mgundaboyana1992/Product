@@ -32,6 +32,7 @@
     <div class="mb-3">
       <label for="category" class="form-label">Category</label>
       <select (change)="selectSubCategory(product.category)" [(ngModel)]="product.category" required  name="category" id="category" class="form-select mb-3" #category="ngModel" ngModel>      
+        <option value="-1">Select Category</option>
         <option  *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</option>
       </select>
       <span class="text-danger" *ngIf="category.touched && category.errors?.['required']">Category is required</span>
@@ -39,11 +40,12 @@
     <div class="mb-3">
       <label for="subcategory" class="form-label">SubCategory</label>
       <select required name="subcategory" id="subcategory" [(ngModel)]="product.subCategory" class="form-select mb-3" #subcategory="ngModel" ngModel>       
+        <option value="-1">Select SubCategory</option>
         <option  *ngFor="let subcat of clonedsubCategories" [value]="subcat.id">{{subcat.name}}</option> 
       </select>
       <span class="text-danger" *ngIf="subcategory.touched && subcategory.errors?.['required']">Subcategory is required</span>
     </div>
-    <button type="submit" [disabled]="!productForm.valid" class="btn btn-primary">Submit</button>
+    <button type="submit" [disabled]="!productForm.valid || category.value=='-1' ||  subcategory.value=='-1'"  class="btn btn-primary">Submit</button>
     <button style="margin-left: 10%;" type="button" class="btn btn-primary" (click)="back()">Back</button>
 </form>
 </div>
