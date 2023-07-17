@@ -31,14 +31,14 @@
     </div>
     <div class="mb-3">
       <label for="category" class="form-label">Category</label>
-      <select (change)="selectSubCategory(product.categoryId)" [(ngModel)]="product.categoryId" required  name="category" id="category" class="form-select mb-3" #category="ngModel" ngModel>      
+      <select (change)="selectSubCategory(product.category)" [(ngModel)]="product.category" required  name="category" id="category" class="form-select mb-3" #category="ngModel" ngModel>      
         <option  *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</option>
       </select>
       <span class="text-danger" *ngIf="category.touched && category.errors?.['required']">Category is required</span>
     </div>
     <div class="mb-3">
       <label for="subcategory" class="form-label">SubCategory</label>
-      <select required name="subcategory" id="subcategory" class="form-select mb-3" #subcategory="ngModel" ngModel>       
+      <select required name="subcategory" id="subcategory" [(ngModel)]="product.subcategory" class="form-select mb-3" #subcategory="ngModel" ngModel>       
         <option  *ngFor="let subcat of clonedsubCategories" [value]="subcat.id">{{subcat.name}}</option> 
       </select>
       <span class="text-danger" *ngIf="subcategory.touched && subcategory.errors?.['required']">Subcategory is required</span>

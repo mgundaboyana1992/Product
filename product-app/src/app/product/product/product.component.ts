@@ -4,8 +4,8 @@ import { ProductsService } from 'src/app/service/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from 'src/app/Model/iproduct';
 import { ICategories } from 'src/app/Model/ICategories';
-import { ISubCategories } from 'src/app/Model/ISubcategories';
 import { CategoryService } from 'src/app/service/category.service';
+import { ISubCategories } from 'src/app/Model/ISubcategories';
 
 @Component({
   selector: 'app-product',
