@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ICategories } from '../Model/ICategories';
-import { ISubCategories } from '../Model/ISubcategories';
+import { ISubCategories } from '../Model/ISubCategories';
 
 @Injectable({
   providedIn: 'root'

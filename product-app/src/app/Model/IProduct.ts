@@ -7,5 +7,5 @@ export interface IProduct {
     description?: string;
     image?: string;
     category?:number;
-    subcategory?:number
+    subCategory?:number
   }

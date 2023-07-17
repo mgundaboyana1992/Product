@@ -4,15 +4,18 @@
         <label class="input-group-text" for="category">Category</label>
         <select (change)="selectSubCategory(category)" [(ngModel)]="category" name="category" id="category"
             class="form-select">
+            <option value="-1">Select Category</option>
             <option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</option>
         </select>
         <label class="input-group-text" for="SubCategory">SubCategory</label>
         <select name="subcategory" id="subcategory" class="form-select" [(ngModel)]="subcategory">
+            <option value="-1">Select SubCategory</option>
             <option *ngFor="let subcat of clonedsubCategories" [value]="subcat.id">{{subcat.name}}</option>
         </select>
-        <input  class="input-group" type="text" name="search" class="form-control" aria-label="Text input with dropdown button">
-        <button class="btn btn-outline-secondary" type="button">Search</button>
+        <input  class="input-group" type="text" name="search" [(ngModel)]="name" class="form-control" aria-label="Text input with dropdown button">
+        <button class="btn btn-outline-secondary" type="button" (click)="searchProducts()">Search</button>
     </div>
+    <span matSnackBarActions></span>
 </div>
 <mat-grid-list [cols]="cols.length" rowHeight="30px">
     <div *ngFor="let cols of cols">

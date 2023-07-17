@@ -1,5 +1,5 @@
 <h1 style="margin-left:40%;">Product Page</h1>
-<div class="px-5">
+<div *ngIf="!isError" class="px-5">
   <form class="col-md-6" #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
     <div class="mb-3">
       <label for="code" class="form-label">Code</label>
@@ -38,7 +38,7 @@
     </div>
     <div class="mb-3">
       <label for="subcategory" class="form-label">SubCategory</label>
-      <select required name="subcategory" id="subcategory" [(ngModel)]="product.subcategory" class="form-select mb-3" #subcategory="ngModel" ngModel>       
+      <select required name="subcategory" id="subcategory" [(ngModel)]="product.subCategory" class="form-select mb-3" #subcategory="ngModel" ngModel>       
         <option  *ngFor="let subcat of clonedsubCategories" [value]="subcat.id">{{subcat.name}}</option> 
       </select>
       <span class="text-danger" *ngIf="subcategory.touched && subcategory.errors?.['required']">Subcategory is required</span>
@@ -46,6 +46,9 @@
     <button type="submit" [disabled]="!productForm.valid" class="btn btn-primary">Submit</button>
     <button style="margin-left: 10%;" type="button" class="btn btn-primary" (click)="back()">Back</button>
 </form>
+</div>
+<div *ngIf="isError" class="px-5">
+  <h2>Error getting Product</h2>
 </div>
   
  
