@@ -79,18 +79,17 @@ export class ProductListComponent implements OnInit {
     else {
       this.products = [...this.clonedProducts];
     }
-   
+
   }
 
-  getStyleClass(quantity:any){
-
-    if(quantity < 10)
-    return 'table-danger';
-    else if(quantity > 10 || quantity < 100)
-    return 'table-warning';
-    else
-    return 'table-success';
-
+  getStyleClass(quantity: any) {
+    if (quantity > 100)
+      return 'table-success';
+    if (quantity >= 10 && quantity <= 100)
+      return 'table-warning';
+    if (quantity < 10)
+      return 'table-danger';
+    return '';
   }
 
 }
