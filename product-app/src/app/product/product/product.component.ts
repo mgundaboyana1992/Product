@@ -7,7 +7,6 @@ import { ICategories } from 'src/app/Model/ICategories';
 import { CategoryService } from 'src/app/service/category.service';
 import { ISubCategories } from 'src/app/Model/ISubCategories';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { config } from 'rxjs';
 
 @Component({
   selector: 'app-product',

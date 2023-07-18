@@ -17,23 +17,23 @@ export class ProductsService {
   }
 
   getById(id: number): Observable<IProduct> {
-    return this.products.get<IProduct>(`${this.URL}/${id}`).pipe(catchError(this.handleError));;
+    return this.products.get<IProduct>(`${this.URL}/${id}`).pipe(catchError(this.handleError));
   }
 
   addProduct(product: IProduct) {
-    return this.products.post<IProduct>(this.URL, product).pipe(catchError(this.handleError));;
+    return this.products.post<IProduct>(this.URL, product).pipe(catchError(this.handleError));
   }
 
   updateProduct(id: number, product: IProduct) {
-    return this.products.put<IProduct>(`${this.URL}/${id}`, product).pipe(catchError(this.handleError));;
+    return this.products.put<IProduct>(`${this.URL}/${id}`, product).pipe(catchError(this.handleError));
   }
 
   deleteProduct(id: number) {
-    return this.products.delete(`${this.URL}/${id}`).pipe(catchError(this.handleError));;
+    return this.products.delete(`${this.URL}/${id}`).pipe(catchError(this.handleError));
   }
 
   searchProducts(params: any) {
-    return this.products.get<IProduct[]>(`${this.URL}/Search?${params}`).pipe(catchError(this.handleError));;
+    return this.products.get<IProduct[]>(`${this.URL}/Search?${params}`).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
